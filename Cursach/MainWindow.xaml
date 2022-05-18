@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cursach"
         mc:Ignorable="d"
-        Title="Главное меню" Height="450" Width="800" Icon="icons8-информация-64.png">
+        Title="Техподдержка" Height="616.5" Width="960.5" Icon="icons8-информация-64.png" WindowStyle="ToolWindow">
     <Window.Background>
         <ImageBrush ImageSource="maxresdefault.jpg"/>
     </Window.Background>
@@ -17,13 +17,15 @@
 
         <Menu Background="#FF1785E0" Foreground="#FFF7F6F6">
             <MenuItem Header="Настройки" Foreground="#FF080303" Cursor="Help">
+                <MenuItem Header="Тема" Click="Theme" Cursor="Hand"/>
+                <MenuItem Header="Язык" Click="Lang" Cursor="Hand"/>
                 <MenuItem Header="Тест SQL" Command="{Binding Connection}" Cursor="Hand"/>
             </MenuItem>
 
             <MenuItem Header="Сотрудники" Foreground="#FF080303" Cursor="Help">
-                <MenuItem Header="Создание сотрудника" Foreground="#FF080303" Cursor="Hand" Command="{Binding Employ}"/>
-                <MenuItem Header="Создание должности" Foreground="#FF080303" Cursor="Hand" Command="{Binding Post}"/>
-                <MenuItem Header="Создание отдела" Foreground="#FF080303" Cursor="Hand" Command="{Binding Department}"/>
+                <MenuItem Header="Редактор сотрудника" Foreground="#FF080303" Cursor="Hand" Command="{Binding Employ}"/>
+                <MenuItem Header="Редактор должности" Foreground="#FF080303" Cursor="Hand" Command="{Binding Post}"/>
+                <MenuItem Header="Редактор отдела" Foreground="#FF080303" Cursor="Hand" Command="{Binding Department}"/>
                 <Menu>
                     <MenuItem Header="Списки" Foreground="#FF080303" Cursor="Help" Background="#FF1785E0">
                         <MenuItem Header="Сотрудники" Foreground="#FF080303" Cursor="Hand" Command="{Binding ViewEmploy}"/>
@@ -42,7 +44,10 @@
             <MenuItem Header="Заявки" Foreground="#FF080303" Cursor="Help">
                 <MenuItem Header="Оформление" Foreground="#FF080303" Cursor="Hand" Command="{Binding Zayavka}"/>
                 <MenuItem Header="Список" Foreground="#FF080303" Cursor="Hand" Command="{Binding ViewZayavka}"/>
+                <MenuItem Header="Редактор категории" Foreground="#FF080303" Cursor="Hand" Command="{Binding Kind}"/>
+                <MenuItem Header="Список категорий" Foreground="#FF080303" Cursor="Hand" Command="{Binding ViewKind}"/>
             </MenuItem>
+            <MenuItem Header="Главное меню" Command="{Binding MainMenu}" Foreground="#FF080303" Cursor="Help"/>
         </Menu>
         <Frame Content="{Binding CurrentPage}" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>

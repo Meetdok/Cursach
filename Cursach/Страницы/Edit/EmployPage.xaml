@@ -10,13 +10,18 @@
     <StackPanel Background="#FFF9F6F6">
         <StackPanel DataContext="{Binding EditEmploy}">
             <Label Content="Фамилия"/>
-            <TextBox Text="{Binding LastName}" Cursor="Pen"/>
+            <TextBox Text="{Binding LastName1}" Cursor="Pen"/>
             <Label Content="Имя"/>
             <TextBox Text="{Binding FirstName}" Cursor="Pen"/>
             <Label Content="Отчество"/>
             <TextBox Text="{Binding Ochestvo}" Cursor="Pen"/>
             <Label Content="Адресс"/>
             <TextBox Text="{Binding Adress}" Cursor="Pen"/>
+            <Label Content="Статус"/>
+            <ComboBox Text="{Binding StatusEm}">
+                <TextBlock>Уволен</TextBlock>
+                <TextBlock>Не уволен</TextBlock>
+            </ComboBox>
         </StackPanel>
         <Label Content="Должность"/>
         <ComboBox ItemsSource="{Binding Posts}"

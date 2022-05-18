@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cursach.Tools;
+using Cursach.КОД.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +22,11 @@ namespace Cursach.Страницы.View
     /// </summary>
     public partial class ZayavkaView : Page
     {
-        public ZayavkaView()
+        
+        public ZayavkaView(DTO.User selectedUser, Данные.Employ selectedEmploy, Данные.Kind selectedKind)
         {
             InitializeComponent();
-            DataContext = new ViewZayavkaVM();
+            DataContext = new ViewZayavkaVM(selectedUser, selectedEmploy);
         }
     }
 }

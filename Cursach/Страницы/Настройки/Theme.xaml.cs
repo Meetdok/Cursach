@@ -1,6 +1,4 @@
-﻿using Cursach.Tools;
-using Cursach.КОД.Edit;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,20 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cursach.Страницы.Edit
+namespace Cursach.Страницы.Настройки
 {
     /// <summary>
-    /// Interaction logic for ZayavkaPage.xaml
+    /// Interaction logic for Theme.xaml
     /// </summary>
-    public partial class ZayavkaPage : Page
+    public partial class Theme : Window
     {
-        public ZayavkaPage(CurrentPageControl currentPageControl)
+        public Theme()
         {
             InitializeComponent();
-            DataContext = new ZayavkaVM(currentPageControl);
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Theme t = new Theme();
+            this.Close();
         }
     }
 }

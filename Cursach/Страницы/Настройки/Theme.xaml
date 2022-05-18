@@ -1,0 +1,21 @@
+﻿<Window x:Class="Cursach.Страницы.Настройки.Theme"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cursach.Страницы.Настройки"
+        mc:Ignorable="d"
+        Title="Тема" Height="175.295" Width="380.997" WindowStyle="None">
+    <Grid Margin="0,0,2,1">
+        <StackPanel>
+            <StackPanel>
+                <Label Content="Выбор темы"/>
+                <ComboBox ItemsSource="{Binding Themes}">
+                    <TextBlock>Тёмная</TextBlock>
+                    <TextBlock>Светлая</TextBlock>
+                </ComboBox>
+            </StackPanel>
+            <Button x:Name="button"  Content="Закрыть" Margin="130,0,118,0" Height="53" Click="button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

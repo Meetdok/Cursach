@@ -11,9 +11,6 @@
     <Grid>
         <StackPanel Background="#FFF3EBEB">
             <StackPanel>
-                <Label Content="Название"/>
-                <TextBox Text="{Binding EditZay.Name}" Cursor="Pen"/>
-                
                 <Label Content="Пользователь"/>
                 <ComboBox ItemsSource="{Binding Users}"
                   SelectedItem="{Binding SelectedUser}"
@@ -22,7 +19,7 @@
                 <Label Content="Сотрудник"/>
                 <ComboBox ItemsSource="{Binding Employs}"
                   SelectedItem="{Binding SelectedEmploy}"
-                  DisplayMemberPath="LastName" Cursor="Help"/>
+                  DisplayMemberPath="LastName1" Cursor="Help"/>
 
                 <Label Content="Дата"/>
                 <DatePicker SelectedDate="{Binding EditZay.Data}" Cursor="Pen"/>
@@ -34,8 +31,13 @@
                 </ComboBox>
 
                 <Label Content="Описание"/>
-                <TextBox Text="{Binding EditZay.Discription}" Cursor="Pen"/>
-                
+                <TextBox Text="{Binding EditZay.Discription}" Cursor="Pen" Height="72"/>
+
+                <Label Content="Категория"/>
+                <ComboBox ItemsSource="{Binding Kinds}"
+                  SelectedItem="{Binding SelectedKind}"
+                  DisplayMemberPath="Title" Cursor="Help"/>
+
                 <Button  Command="{Binding SaveZay}" Margin="330,0,308,0" Height="156" Cursor="Hand">
                     <Button.Background>
                         <ImageBrush ImageSource="download.png"/>

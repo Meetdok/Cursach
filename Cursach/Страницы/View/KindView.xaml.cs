@@ -1,5 +1,4 @@
-﻿using Cursach.Tools;
-using Cursach.КОД.Edit;
+﻿using Cursach.КОД.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cursach.Страницы.Edit
+namespace Cursach.Страницы.View
 {
     /// <summary>
-    /// Interaction logic for ZayavkaPage.xaml
+    /// Interaction logic for KindView.xaml
     /// </summary>
-    public partial class ZayavkaPage : Page
+    public partial class KindView : Page
     {
-        public ZayavkaPage(CurrentPageControl currentPageControl)
+        public KindView(Tools.CurrentPageControl currentPageControl)
         {
             InitializeComponent();
-            DataContext = new ZayavkaVM(currentPageControl);
+            DataContext = new ViewKindVM();
         }
     }
 }

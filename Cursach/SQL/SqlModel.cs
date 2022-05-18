@@ -21,10 +21,7 @@ namespace Cursach.Model
             return sqlModel;
         }
 
-        
-
-        
-
+       
         internal List<Post> SelectPostByDepartment(Department selectedDep)
         {
             int id = selectedDep?.ID ?? 0;
@@ -52,6 +49,72 @@ namespace Cursach.Model
             return posts;
         }
 
+        internal List<Kind> GetKinds()
+        {
+            var mySqlDB = MySqlDB.GetDB();
+            var kinds = new List<Kind>();
+            string query = $"SELECT * FROM `kind` ";
+            if (mySqlDB.OpenConnection())
+            {
+                using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
+                using (MySqlDataReader dr = mc.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        kinds.Add(new Kind
+                        {
+                            ID = dr.GetInt32("id"),
+                            Title = dr.GetString("title")
+                            
+                            
+                      });
+                    }
+                }
+                mySqlDB.CloseConnection();
+            }
+            return kinds;
+        }
+
+        internal List<UserZayavka> SearchZayavkaByKind(Kind value)
+        {
+            var users = new List<UserZayavka>();
+            var mySqlDB = MySqlDB.GetDB();
+            string query = $"SELECT * FROM zayavka z CROSS JOIN user u ON u.id = z.user_id join employer e on e.id = z.employer_id where z.kind_id = " + value.ID;
+            if (mySqlDB.OpenConnection())
+            {
+                using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
+                using (MySqlDataReader dr = mc.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        users.Add(new UserZayavka
+                        {
+                            User = new User
+                            {
+                                ID = dr.GetInt32("user_id"),
+                                LastName = dr.GetString("lastname"),
+                                PhoneNumber = dr.GetString("phonenumber"),
+                            },
+                            Zayavka = new Zayavka
+                            {
+                                ID = dr.GetInt32("id"),
+                                Data = dr.GetDateTime("data"),
+                                StatusZayavki = dr.GetString("statuszayavki"),
+                                Discription = dr.GetString("discription"),
+                            },
+                            Employ = new Employ
+                            {
+                                ID = dr.GetInt32("employer_id"),
+                                LastName1 = dr.GetString("lastname1")
+                            }
+                        });
+                    }
+                }
+                mySqlDB.CloseConnection();
+            }
+            return users;
+        }
+
         internal List<Employ> EmploysByPost(Post selectedPost)
         {
             int id = selectedPost?.ID ?? 0;
@@ -69,10 +132,11 @@ namespace Cursach.Model
                         {
                             ID = dr.GetInt32("id"),
                             FirstName = dr.GetString("firstname"),
-                            LastName = dr.GetString("lastname"),
+                            LastName1 = dr.GetString("lastname1"),
                             Ochestvo = dr.GetString("ochestvo"),
                             Adress = dr.GetString("adress"),
-                            PostId = dr.GetInt32("post_id")
+                            PostId = dr.GetInt32("post_id"),
+                            StatusEm = dr.GetString("statusEm")
 
                         });
                     }
@@ -106,6 +170,29 @@ namespace Cursach.Model
             return posts;
         }
 
+        public List<Kind> KindsCreate(int skip, int count)
+        {
+            var kinds = new List<Kind>();
+            var mySqlDB = MySqlDB.GetDB();
+            string query = $"SELECT * FROM `kind` LIMIT {skip},{count}";
+            if (mySqlDB.OpenConnection())
+            {
+                using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
+                using (MySqlDataReader dr = mc.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        kinds.Add(new Kind
+                        {
+                            ID = dr.GetInt32("id"),
+                            Title = dr.GetString("title")
+                        });
+                    }
+                }
+                mySqlDB.CloseConnection();
+            }
+            return kinds;
+        }
 
         public List<Zayavka> ZayCreate(int skip, int count)
         {
@@ -122,7 +209,7 @@ namespace Cursach.Model
                         zays.Add(new Zayavka
                         {
                             ID = dr.GetInt32("id"),
-                            Name = dr.GetString("name"),
+                            
                             Data=dr.GetDateTime("data"),
                             StatusZayavki = dr.GetString("statuszayavki"),
                             Discription = dr.GetString("discription")
@@ -175,7 +262,8 @@ namespace Cursach.Model
                         {
                             ID = dr.GetInt32("id"),
                             LastName = dr.GetString("lastname"),
-                            PhoneNumber = dr.GetString("phonenumber")
+                            PhoneNumber = dr.GetString("phonenumber"),
+                            StatusUs=dr.GetString("statusUs")
                         });
                     }
                 }
@@ -199,7 +287,7 @@ namespace Cursach.Model
                         employs.Add(new Employ
                         {
                             ID = dr.GetInt32("id"),
-                            LastName = dr.GetString("lastname"),
+                            LastName1 = dr.GetString("lastname1"),
                             FirstName = dr.GetString("firstname"),
                             Ochestvo = dr.GetString("ochestvo"),
                             Adress = dr.GetString("adress"),
@@ -217,7 +305,7 @@ namespace Cursach.Model
         {
             var users = new List<UserZayavka>();
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT * FROM zayavka z CROSS JOIN user u ON u.id = z.user_id AND z.name LIKE '%{name}%'";
+            string query = $"SELECT * FROM zayavka z CROSS JOIN user u ON u.id = z.user_id AND z.name LIKE '%{name}%' join employer e on e.id = z.employer_id";
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
@@ -234,11 +322,16 @@ namespace Cursach.Model
                                 PhoneNumber = dr.GetString("phonenumber"),
                             },
                             Zayavka = new Zayavka { ID = dr.GetInt32("id"),
-                                Name = dr.GetString("name"),
+                                
                                 Data = dr.GetDateTime("data"),
                                 StatusZayavki = dr.GetString("statuszayavki"),
-                                Discription = dr.GetString("discription")
-                            }
+                                Discription = dr.GetString("discription"),
+                            },
+                             Employ = new Employ
+                             {
+                                 ID = dr.GetInt32("employer_id"),
+                                 LastName1 = dr.GetString("lastname1")
+                             }
                         });
                     }
                 }

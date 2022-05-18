@@ -17,5 +17,8 @@ namespace Cursach.DTO
 
         [Column("phonenumber")]
         public string PhoneNumber { get; set; }
+
+        [Column("statusUs")]
+        public string StatusUs { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using Cursach.Страницы.View;
 
 namespace Cursach.ViewModel
 {
-    public  class MainVM : BaseVM
+    public class MainVM : BaseVM
     {
         CurrentPageControl currentPageControl;
         
@@ -35,6 +35,15 @@ namespace Cursach.ViewModel
 
         public CommandVM Zayavka { get; set; }
 
+        public CommandVM ViewZayavka { get; set; }
+
+        public CommandVM Kind { get; set; }
+
+        public CommandVM ViewKind { get; set; }
+
+        public CommandVM MainMenu { get; set; }
+
+        
 
         public MainVM()
         {
@@ -45,6 +54,8 @@ namespace Cursach.ViewModel
             {
                 currentPageControl.SetPage(new ConnectionPage(currentPageControl));
             });
+
+            
 
             Department = new CommandVM(() =>
             {
@@ -87,10 +98,29 @@ namespace Cursach.ViewModel
                 currentPageControl.SetPage(new UserView(currentPageControl));
             });
 
-
             Zayavka = new CommandVM(() =>
             {
-                currentPageControl.SetPage(new ZayavkaPage(new ZayavkaVM(currentPageControl)));
+                currentPageControl.SetPage(new ZayavkaPage(currentPageControl));
+            });
+
+            ViewZayavka = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new ZayavkaView(null, null, null));
+            });
+
+
+            Kind = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new KindPage(new KindVM(currentPageControl)));
+            });
+
+            ViewKind = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new KindView(currentPageControl));
+            });
+
+            MainMenu = new CommandVM(() => {
+                currentPageControl.SetPage(null);
             });
 
         }
@@ -100,6 +130,8 @@ namespace Cursach.ViewModel
         {
             Signal(nameof(CurrentPage));
         }
+
+        
 
     }
 }

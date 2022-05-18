@@ -12,7 +12,7 @@ namespace Cursach.ViewModel
     class Connection
     {
         PasswordBox passwordBox;
-        private readonly CurrentPageControl currentPageControl;
+        
 
         public string Server { get; set; }
         public string User { get; set; }
@@ -27,7 +27,7 @@ namespace Cursach.ViewModel
         public Connection(PasswordBox passwordBox, CurrentPageControl currentPageControl)
         {
             this.passwordBox = passwordBox;
-            this.currentPageControl = currentPageControl;
+            
             Server = Properties.Settings.Default.server;
             User = Properties.Settings.Default.user;
             DB = Properties.Settings.Default.db;
@@ -52,9 +52,7 @@ namespace Cursach.ViewModel
                 System.Windows.MessageBox.Show("Данные сохранены");
             });
 
-            MainMenu = new CommandVM(()=> {
-                currentPageControl.SetPage(null);
-            });
+            
         }
     }
 }

@@ -112,6 +112,7 @@
     </ApplicationDefinition>
     <Compile Include="Данные\Department.cs" />
     <Compile Include="Данные\Employ.cs" />
+    <Compile Include="Данные\Kind.cs" />
     <Compile Include="Данные\Post.cs" />
     <Compile Include="Данные\User.cs" />
     <Compile Include="SQL\SqlModel.cs" />
@@ -124,15 +125,23 @@
     <Compile Include="КОД\BaseVM.cs" />
     <Compile Include="КОД\Edit\DepVM.cs" />
     <Compile Include="КОД\Edit\EmployVM.cs" />
+    <Compile Include="КОД\Edit\KindVM.cs" />
     <Compile Include="КОД\Edit\PostVM.cs" />
     <Compile Include="КОД\Edit\UserVM.cs" />
     <Compile Include="КОД\Edit\ZayavkaVM.cs" />
     <Compile Include="КОД\MainVM.cs" />
     <Compile Include="КОД\View\ViewDepVM.cs" />
     <Compile Include="КОД\View\ViewEmployVM.cs" />
+    <Compile Include="КОД\View\ViewKindVM.cs" />
     <Compile Include="КОД\View\ViewPostVM.cs" />
     <Compile Include="КОД\View\ViewUserVM.cs" />
     <Compile Include="КОД\Настройки\Connection.cs" />
+    <Compile Include="Страницы\Настройки\Lang.xaml.cs">
+      <DependentUpon>Lang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Страницы\Настройки\Theme.xaml.cs">
+      <DependentUpon>Theme.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -151,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Страницы\Edit\EmployPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Страницы\Edit\KindPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +187,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Страницы\View\KindView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Страницы\View\PostView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +207,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Страницы\Настройки\Lang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Страницы\Настройки\Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SQL\MySqlDB.cs" />
@@ -198,6 +223,9 @@
     </Compile>
     <Compile Include="Страницы\Edit\EmployPage.xaml.cs">
       <DependentUpon>EmployPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Страницы\Edit\KindPage.xaml.cs">
+      <DependentUpon>KindPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Страницы\Edit\PostPage.xaml.cs">
       <DependentUpon>PostPage.xaml</DependentUpon>
@@ -214,12 +242,16 @@
     <Compile Include="Страницы\View\EmployView.xaml.cs">
       <DependentUpon>EmployView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Страницы\View\KindView.xaml.cs">
+      <DependentUpon>KindView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Страницы\View\PostView.xaml.cs">
       <DependentUpon>PostView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Страницы\View\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="КОД\View\ViewZayavkaVM.cs" />
     <Compile Include="Страницы\View\ZayavkaView.xaml.cs">
       <DependentUpon>ZayavkaView.xaml</DependentUpon>
     </Compile>
@@ -260,6 +292,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Страницы\Edit\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

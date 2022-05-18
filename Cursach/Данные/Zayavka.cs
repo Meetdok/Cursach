@@ -11,8 +11,7 @@ namespace Cursach.Данные
     [Table("zayavka")]
     public class Zayavka : BaseDTO
     {
-        [Column("name")]
-        public string Name { get; set; }
+        
 
         [Column("data")]
         public DateTime Data { get; set; }
@@ -28,5 +27,7 @@ namespace Cursach.Данные
 
         [Column("employer_id")]
         public int EmployerId { get; set; }
+        [Column("kind_id")]
+        public int KindId { get; set; }
     }
 }

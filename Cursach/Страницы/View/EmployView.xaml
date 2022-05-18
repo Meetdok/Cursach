@@ -19,10 +19,11 @@
         <ListView Grid.Row="1" ItemsSource="{Binding EmploysByPost}" SelectedItem="{Binding SelectedEmploy}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName1}"/>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                     <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Ochestvo}"/>
                     <GridViewColumn Header="Адресс" DisplayMemberBinding="{Binding Adress}"/>
+                    <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding StatusEm}"/>
                 </GridView>
             </ListView.View>
         </ListView>

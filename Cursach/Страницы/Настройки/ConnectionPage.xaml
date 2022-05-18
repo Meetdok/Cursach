@@ -27,6 +27,6 @@
             <Button Content="Тест связи" Command="{Binding TestConnection}" Cursor="Hand"/>
             <Button Content="Сохранить" Command="{Binding SaveSettings}" Cursor="Hand"/>
         </StackPanel>
-        <Button x:Name="button" Content="Главное меню" Height="66" Command="{Binding MainMenu}" Cursor="Hand" Margin="338,0"/>       
+         
     </StackPanel>
 </Page>

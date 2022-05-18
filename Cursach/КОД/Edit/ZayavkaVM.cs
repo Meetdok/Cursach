@@ -28,6 +28,16 @@ namespace Cursach.КОД.Edit
             }
         }
 
+        public Kind SelectedKind
+        {
+            get => selectedKind;
+            set
+            {
+                selectedKind = value;
+                Signal();
+            }
+        }
+
         public Employ SelectedEmploy
         {
             get => selectedEmploy;
@@ -41,10 +51,12 @@ namespace Cursach.КОД.Edit
 
         public List<User> Users { get; set; }
         public List<Employ> Employs { get; set; }
+        public List<Kind> Kinds { get; set; }
 
         private CurrentPageControl currentPageControl;
         private User selectedUser;
         private Employ selectedEmploy;
+        private Kind selectedKind;
 
         public ZayavkaVM(CurrentPageControl currentPageControl)
         {
@@ -59,27 +71,30 @@ namespace Cursach.КОД.Edit
             InitCommand();
             SelectedUser = Users.FirstOrDefault(s => s.ID == editZay.UserId);
             SelectedEmploy = Employs.FirstOrDefault(s => s.ID == editZay.EmployerId);
+            SelectedKind = Kinds.FirstOrDefault(s => s.ID == editZay.KindId);
         }
 
         private void InitCommand()
         {
             Users = SqlModel.GetInstance().UserCreate(0, 100);
             Employs = SqlModel.GetInstance().EmployCreate(0, 100);
+            Kinds = SqlModel.GetInstance().KindsCreate(0, 100);
             SaveZay = new CommandVM(() =>
             {
-                if (SelectedUser == null || SelectedEmploy == null)
+                if (SelectedUser == null || SelectedEmploy == null || selectedKind == null)
                 {
                     System.Windows.MessageBox.Show("Введены не все данные");
                     return;
                 }
                 EditZay.UserId = SelectedUser.ID;
                 EditZay.EmployerId = SelectedEmploy.ID;
+                EditZay.KindId = SelectedKind.ID;
                 var model = SqlModel.GetInstance();
                 if (EditZay.ID == 0)
                     model.Insert(EditZay);
                 else
                     model.Update(EditZay);
-                currentPageControl.SetPage(new ZayavkaView(SelectedUser, SelectedEmploy));
+                currentPageControl.SetPage(new ZayavkaView(SelectedUser, SelectedEmploy, SelectedKind));
             });
         }
     }

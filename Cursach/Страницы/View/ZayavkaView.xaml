@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ZayavkaView">
-
     <Grid>
         <Grid Background="#FF2A49F0">
             <Grid.RowDefinitions>
@@ -16,17 +15,17 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Заявка:"/>
-                <ComboBox ItemsSource="{Binding EditZay.Name}" SelectedItem="{Binding SelectedZay}" DisplayMemberPath="Title" Width="200"/>
+                <ComboBox ItemsSource="{Binding Kind}" SelectedItem="{Binding SelectedKind}" DisplayMemberPath="Title" Width="200"/>
             </StackPanel>
-            <ListView Grid.Row="1" ItemsSource="{Binding SearchZayavkaByName}" SelectedItem="{Binding SelectedUser}">
+            <ListView Grid.Row="1" ItemsSource="{Binding SearchZayavkaByName}" SelectedItem="{Binding SelectedUserAndEmploy}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Название" DisplayMemberBinding="{Binding SelectedZay.Name}"/>
-                        <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding SelectedZay.Data}"/>
-                        <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding SelectedZay.StatusZayavki}"/>
-                        <GridViewColumn Header="Описание" DisplayMemberBinding="{Binding SelectedZay.Discription}"/>
-                        <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding SelectedZay.LastName}"/>
-                        <GridViewColumn Header="Номер телефона" DisplayMemberBinding="{Binding SelectedZay.PhoneNumber}"/>
+                        <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Zayavka.Data}"/>
+                        <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Zayavka.StatusZayavki}"/>
+                        <GridViewColumn Header="Описание" DisplayMemberBinding="{Binding Zayavka.Discription}"/>
+                        <GridViewColumn Header="Фамилия клиента" DisplayMemberBinding="{Binding User.LastName}"/>
+                        <GridViewColumn Header="Номер телефона клиента" DisplayMemberBinding="{Binding User.PhoneNumber}"/>
+                        <GridViewColumn Header="Фамилия сотрудника" DisplayMemberBinding="{Binding Employ.LastName1}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

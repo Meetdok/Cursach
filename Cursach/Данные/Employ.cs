@@ -14,14 +14,17 @@ namespace Cursach.Данные
         [Column("firstname")]
         public string FirstName { get; set; }
 
-        [Column("lastname")]
-        public string LastName { get; set; }
+        [Column("lastname1")]
+        public string LastName1 { get; set; }
 
         [Column("ochestvo")]
         public string Ochestvo { get; set; }
 
         [Column("adress")]
         public string Adress { get; set; }
+
+        [Column("statusEm")]
+        public string StatusEm { get; set; }
 
         [Column("post_id")]
         public int PostId { get; set; }

@@ -12,6 +12,11 @@
         <TextBox Text="{Binding EditUser.LastName}" Cursor="Pen"/>
         <Label Content="Номер телефона"/>
         <TextBox Text="{Binding EditUser.PhoneNumber}" Cursor="Pen"/>
+        <Label Content="Статус"/>
+        <ComboBox Text="{Binding EditUser.StatusUs}">
+            <TextBlock>Зарегестриован</TextBlock>
+            <TextBlock>Не зарегестрирован</TextBlock>
+        </ComboBox>
         <Button  Command="{Binding SaveUser}" Margin="322,0,305,0" Height="156" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="download.png"/>

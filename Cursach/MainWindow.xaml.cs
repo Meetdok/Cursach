@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Cursach.Pages;
 using Cursach.ViewModel;
+using Cursach.Страницы.Настройки;
 
 namespace Cursach
 {
@@ -29,6 +30,16 @@ namespace Cursach
             
         }
 
+        private void Theme(object sender, RoutedEventArgs e)
+        {
+            Theme t = new Theme();
+            t.Show();
+        }
 
+        private void Lang(object sender, RoutedEventArgs e)
+        {
+            Lang l = new Lang();
+            l.Show();
+        }
     }
 }
